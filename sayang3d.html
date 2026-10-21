@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>untuk Kamu ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ff4f98;
+    --soft-pink: #ffd6e8;
+    --purple: #9d6bff;
+    --dark: #260b35;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    background:
+        radial-gradient(ellipse at 15% 15%, #a93b83 0%, transparent 40%),
+        radial-gradient(ellipse at 85% 85%, #652f9f 0%, transparent 40%),
+        linear-gradient(135deg, #170b30, #48134f, #a52c72);
+    overflow-x: hidden;
+    position: relative;
+    isolation: isolate;
+}
+
+/* CAHAYA LATAR */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: -2;
+    pointer-events: none;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255, 88, 166, .16),
+        transparent,
+        rgba(161, 109, 255, .17),
+        transparent
+    );
+    animation: rotateGlow 25s linear infinite;
+}
+
+@keyframes rotateGlow {
+    to { transform: rotate(360deg); }
+}
+
+/* BINTANG */
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+        radial-gradient(2px 2px at 15% 20%, white 90%, transparent),
+        radial-gradient(2px 2px at 80% 15%, #ffc3e1 90%, transparent),
+        radial-gradient(2px 2px at 40% 70%, white 90%, transparent),
+        radial-gradient(3px 3px at 90% 60%, #ffb8dc 90%, transparent),
+        radial-gradient(2px 2px at 25% 85%, white 90%, transparent);
+    background-size: 230px 230px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+
+/* HATI MELAYANG */
+.heart {
+    position: fixed;
+    bottom: -60px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    filter: drop-shadow(0 0 12px #ff70ba);
+    animation: floatHeart 9s linear infinite;
+}
+
+.heart:nth-of-type(2) { left: 8%; animation-delay: 0s; }
+.heart:nth-of-type(3) { left: 25%; animation-delay: 2s; }
+.heart:nth-of-type(4) { left: 48%; animation-delay: 1s; }
+.heart:nth-of-type(5) { left: 72%; animation-delay: 3s; }
+.heart:nth-of-type(6) { left: 90%; animation-delay: 1.5s; }
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0) scale(.7);
+        opacity: 0;
+    }
+    15% { opacity: .85; }
+    85% { opacity: .7; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* KELopak BUNGA */
+.petal {
+    position: fixed;
+    top: -40px;
+    z-index: 1;
+    pointer-events: none;
+    color: #ff9bc9;
+    text-shadow: 0 0 10px #ff72b7;
+    animation: fallPetal 10s linear infinite;
+}
+
+@keyframes fallPetal {
+    0% {
+        transform: translateY(-5vh) translateX(0) rotate(0);
+        opacity: 0;
+    }
+    10% { opacity: .8; }
+    90% { opacity: .8; }
+    100% {
+        transform: translateY(110vh) translateX(100px) rotate(600deg);
+        opacity: 0;
+    }
+}
+
+/* KARTU 3D */
+.container {
+    width: 100%;
+    max-width: 450px;
+    padding: 32px 25px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.45);
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.17),
+        rgba(255,195,229,.07)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.4),
+        0 0 40px rgba(255,70,166,.15);
+    transform-style: preserve-3d;
+    transition: transform .18s ease-out;
+    animation: cardFloat 5s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes cardFloat {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+}
+
+/* KILAU KARTU */
+.container::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(
+        130deg,
+        #ffffff,
+        #ff65ad,
+        transparent 45%,
+        #ba8aff,
+        #ffffff
+    );
+    background-size: 300% 300%;
+    animation: borderGlow 7s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+}
+
+/* HATI UTAMA 3D */
+.heart-scene {
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 600px;
+    transform: translateZ(40px);
+}
+
+.big-heart {
+    position: relative;
+    font-size: 100px;
+    line-height: 1;
+    filter:
+        drop-shadow(0 10px 10px rgba(0,0,0,.25))
+        drop-shadow(0 0 20px #ff438d);
+    animation: heart3D 3s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes heart3D {
+    0%, 100% {
+        transform: rotateY(-12deg) rotateX(5deg) scale(1);
+    }
+    50% {
+        transform: rotateY(12deg) rotateX(-5deg) scale(1.12);
+    }
+}
+
+/* CAHAYA DI BELAKANG HATI */
+.heart-scene::before {
+    content: "";
+    position: absolute;
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    background: #ff3c91;
+    filter: blur(45px);
+    opacity: .55;
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    to {
+        opacity: .95;
+        transform: scale(1.25);
+    }
+}
+
+h1 {
+    font-size: clamp(27px, 7vw, 36px);
+    color: #fff2fa;
+    text-shadow:
+        0 0 8px #ff65ae,
+        0 0 25px rgba(255,65,156,.8),
+        0 4px 12px rgba(0,0,0,.2);
+    margin: 6px 0 15px;
+    transform: translateZ(35px);
+}
+
+.subtitle {
+    color: #ffe0f0;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 55px;
+    margin-bottom: 20px;
+    transform: translateZ(25px);
+}
+
+.cursor {
+    color: #ff9ecb;
+    animation: blink .7s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* TOMBOL */
+.buttons {
+    transform: translateZ(35px);
+}
+
+button {
+    border: 1px solid rgba(255,255,255,.4);
+    padding: 12px 17px;
+    margin: 5px 3px;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(135deg, #ff5da8, #d72d82);
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        0 5px 0 #8e235b,
+        0 10px 22px rgba(255,52,148,.24);
+    transition: transform .25s, box-shadow .25s;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow:
+        0 8px 0 #8e235b,
+        0 15px 28px rgba(255,52,148,.4);
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #8e235b;
+}
+
+.music-btn {
+    background: linear-gradient(135deg, #ad83ff, #7541cc);
+    box-shadow: 0 5px 0 #4c2b8a, 0 10px 22px #7541cc40;
+}
+
+.hug-btn {
+    background: linear-gradient(135deg, #ff9aaf, #ff4f89);
+}
+
+/* SURAT */
+.surat {
+    display: none;
+    margin-top: 24px;
+    padding: 21px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.8);
+    background: linear-gradient(145deg, #fff5fb, #ffd9eb);
+    color: #78314f;
+    text-align: left;
+    line-height: 1.8;
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.18),
+        inset 0 1px white;
+    transform-origin: top;
+    animation: letterOpen .7s ease;
+}
+
+.surat h2 {
+    color: #d82c79;
+    font-size: 21px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.surat p {
+    margin-bottom: 13px;
+    font-size: 14px;
+}
+
+.signature {
+    color: #d82c79;
+    font-weight: bold;
+    text-align: center;
+}
+
+@keyframes letterOpen {
+    from {
+        opacity: 0;
+        transform: rotateX(-15deg) translateY(15px) scale(.95);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0) translateY(0) scale(1);
+    }
+}
+
+/* PELUK VIRTUAL */
+.hug-message {
+    display: none;
+    margin-top: 20px;
+    padding: 20px 12px;
+    border-radius: 20px;
+    color: #fff0f8;
+    border: 1px solid #ffffff50;
+    background: linear-gradient(135deg, #a74e9c, #ed559c);
+    box-shadow: 0 10px 30px #e94c9a30;
+    animation: hugAppear .6s ease;
+}
+
+.hug-emoji {
+    font-size: 55px;
+    display: inline-block;
+    filter: drop-shadow(0 5px 10px #64123f50);
+    animation: hugBounce .8s infinite alternate;
+}
+
+.hug-message p {
+    font-size: 14px;
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+@keyframes hugAppear {
+    from { opacity: 0; transform: scale(.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes hugBounce {
+    to { transform: scale(1.13) rotate(-8deg); }
+}
+
+/* HATI DARI TOMBOL PELUK */
+.floating-heart {
+    position: fixed;
+    z-index: 10;
+    pointer-events: none;
+    font-size: 26px;
+    filter: drop-shadow(0 0 8px #ff68b0);
+    animation: popHeart 1.8s ease-out forwards;
+}
+
+@keyframes popHeart {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(.5) rotate(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-170px) scale(1.6) rotate(35deg);
+    }
+}
+
+footer {
+    margin-top: 24px;
+    color: #ffd5e9;
+    font-size: 12px;
+    transform: translateZ(20px);
+}
+
+.footer-heart {
+    color: #ff83bd;
+    animation: blink 1s infinite;
+}
+
+/* HP */
+@media (max-width: 480px) {
+    body {
+        padding: 25px 13px;
+    }
+
+    .container {
+        padding: 25px 17px;
+        animation-duration: 6s;
+    }
+
+    .heart-scene {
+        height: 130px;
+    }
+
+    .big-heart {
+        font-size: 85px;
+    }
+
+    .surat {
+        padding: 17px 14px;
+    }
+
+    button {
+        padding: 12px 14px;
+    }
+}
+
+/* AKSESIBILITAS */
+@media (prefers-reduced-motion: reduce) {
+    .stars,
+    .heart,
+    .petal,
+    .big-heart,
+    .heart-scene::before,
+    .container,
+    .container::before,
+    .hug-emoji {
+        animation: none !important;
+    }
+
+    .container {
+        transition: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- HATI MELAYANG -->
+<div class="heart">❤️</div>
+<div class="heart">💕</div>
+<div class="heart">💗</div>
+<div class="heart">💖</div>
+<div class="heart">💘</div>
+
+<!-- KARTU ROMANTIS -->
+<main class="container" id="card">
+
+    <div class="heart-scene">
+        <div class="big-heart">❤️</div>
+    </div>
+
+    <h1>aku sayang kamu delfina</h1>
+
+    <p class="subtitle">
+        <span id="typingText"></span>
+        <span class="cursor">|</span>
+    </p>
+
+    <div class="buttons">
+        <button onclick="toggleSurat()" id="letterBtn">
+            💌 buka surat
+        </button>
+
+        <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+            🎵 putar musik
+        </button>
+
+        <button class="hug-btn" onclick="virtualHug()">
+            🤗 peluk aku
+        </button>
+    </div>
+
+    <!-- SURAT PERMINTAAN MAAF -->
+    <div class="surat" id="surat">
+
+        <h2>maafin aku yha sayang 🥺❤️</h2>
+
+        <p>
+            sayanggg, akuu maww minta maaff karenaa selamaa inii
+            akuu masihh banyakk salahh samaa kamuu. mungkin adaa
+            perkataan atau sikap akuu yangg bikin kamuu
+            kecewaa, sedihh, atau bahkan sakit hatii.
+        </p>
+
+        <p>
+            akuu sadarr akuu bukann orangg yangg sempurnaa.
+            akuu masihh punyaa banyakk kekurangan dan masih
+            harus belajar menjadi lebih baik. aku nggak
+            mau cuma bilang maaf, aku juga ingin
+            memperbaiki sikap aku, bukan hanya ketikan 
+            tapi akan kubuktikan sendiri ke diri sendiri dan ke kamuu.
+        </p>
+
+        <p>
+            akuu sayangg bangett samaa kamuu. kamuu adalahh
+            seseorang yangg berarti buatt akuu. akuu senangg
+            bisaa kenall kamuu, ngobrol samaa kamuu, dann
+            berbagii banyakk ceritaa barengg kamuu.
+        </p>
+
+        <p>
+            maaff kalauu akuu pernahh bikinn kamuu merasaa
+            nggak dihargai atauu kurangg dimengertii.
+            akuu ingin belajar mendengarkan kamuu,
+            memahamii perasaann kamuu, dann menghargaii
+            apaa yang kamuu rasakan.
+        </p>
+
+        <p>
+            akuu nggak berharap semuanya langsung
+            kembali seperti semula. akuu cumaa berharap
+            kamu maww memperayaii akuu kagii.
+            akuu ingin membuktikan perubahann lewat
+            sikap, bukan cuma lewat kata-kata.
+        </p>
+
+        <p class="signature">
+            akuu sayangg kamuuu ❤️<br>
+            maafin akuu yaa sayangg,
+            i lovee uu moree 🫶
+        </p>
+
+    </div>
+
+    <!-- PELUK VIRTUAL -->
+    <div class="hug-message" id="hugMessage">
+
+        <div class="hug-emoji">🤗💗</div>
+
+        <h3>peluk virtual buat fina!</h3>
+
+        <p>
+            sini sayang aku kasih peluk hangat dari jauh 🫂<br>
+            semoga kamu selalu merasa dihargai,
+            disayangi, dan bahagia. ❤️
+        </p>
+
+    </div>
+
+    <footer>
+        dibuat dengan tulus dari hati
+        <span class="footer-heart">♥</span>
+    </footer>
+
+</main>
+
+<script>
+/* 1. KETIK OTOMATIS */
+const typingText = document.getElementById("typingText");
+
+const messages = [
+    "ada sesuatu yang ingin aku sampaikan...",
+    "maaf yhaa sayang kalau aku banyak salah sama kamu 🥺",
+    "aku mau belajar menjadi lebih baik.",
+    "aku sayang kamu, dari hati yang paling dalam ❤️"
+];
+
+let messageIndex = 0;
+let charIndex = 0;
+let deleting = false;
+let typingTimer;
+
+function typeEffect() {
+    const currentMessage = messages[messageIndex];
+
+    if (!deleting) {
+        typingText.textContent =
+            currentMessage.substring(0, charIndex + 1);
+
+        charIndex++;
+
+        if (charIndex >= currentMessage.length) {
+            deleting = true;
+            typingTimer = setTimeout(typeEffect, 1800);
+            return;
+        }
+    } else {
+        typingText.textContent =
+            currentMessage.substring(0, charIndex - 1);
+
+        charIndex--;
+
+        if (charIndex <= 0) {
+            deleting = false;
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+    }
+
+    typingTimer = setTimeout(typeEffect, deleting ? 30 : 65);
+}
+
+typeEffect();
+
+
+/* 2. EFEK KARTU 3D MOUSE */
+const card = document.getElementById("card");
+
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+
+    card.addEventListener("mousemove", function(event) {
+        const rect = card.getBoundingClientRect();
+
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+
+        const rotateY = (x - 0.5) * 18;
+        const rotateX = (0.5 - y) * 18;
+
+        card.style.animation = "none";
+        card.style.transform =
+            `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+    });
+
+    card.addEventListener("mouseleave", function() {
+        card.style.transform = "";
+        card.style.animation = "";
+    });
+}
+
+
+/* 3. SURAT CINTA */
+function toggleSurat() {
+    const surat = document.getElementById("surat");
+    const btn = document.getElementById("letterBtn");
+
+    if (surat.style.display === "block") {
+        surat.style.display = "none";
+        btn.innerHTML = "💌 Buka Surat";
+    } else {
+        surat.style.display = "block";
+        btn.innerHTML = "💌 Tutup Surat";
+
+        setTimeout(function() {
+            surat.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }, 100);
+    }
+}
+
+
+/* 4. MUSIK ROMANTIS DIGITAL */
+let audioContext = null;
+let musicTimer = null;
+let musicPlaying = false;
+let noteIndex = 0;
+
+const melody = [
+    261.63, 329.63, 392.00, 329.63,
+    293.66, 349.23, 440.00, 349.23,
+    261.63, 329.63, 392.00, 523.25,
+    440.00, 392.00, 329.63, 293.66
+];
+
+function playNote(frequency) {
+    if (!audioContext || !musicPlaying) return;
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = frequency;
+
+    gain.gain.setValueAtTime(
+        0.0001, audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.055, audioContext.currentTime + 0.06
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001, audioContext.currentTime + 0.55
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.6);
+}
+
+function musicLoop() {
+    if (!musicPlaying) return;
+
+    playNote(melody[noteIndex]);
+
+    noteIndex = (noteIndex + 1) % melody.length;
+
+    musicTimer = setTimeout(musicLoop, 420);
+}
+
+async function toggleMusic() {
+    const btn = document.getElementById("musicBtn");
+
+    if (!musicPlaying) {
+        try {
+            const AudioClass =
+                window.AudioContext || window.webkitAudioContext;
+
+            if (!AudioClass) {
+                alert("Browser kamu belum mendukung musik digital.");
+                return;
+            }
+
+            if (!audioContext) {
+                audioContext = new AudioClass();
+            }
+
+            if (audioContext.state === "suspended") {
+                await audioContext.resume();
+            }
+
+            musicPlaying = true;
+            btn.innerHTML = "⏸️ Jeda Musik";
+            musicLoop();
+
+        } catch (error) {
+            musicPlaying = false;
+            btn.innerHTML = "🎵 Putar Musik";
+            alert("Musik gagal diputar. Coba lagi ya!");
+        }
+
+    } else {
+        musicPlaying = false;
+        clearTimeout(musicTimer);
+        btn.innerHTML = "🎵 Putar Musik";
+    }
+}
+
+
+/* 5. PELUK VIRTUAL */
+function virtualHug() {
+    const message = document.getElementById("hugMessage");
+
+    message.style.display = "block";
+
+    for (let i = 0; i < 16; i++) {
+        setTimeout(function() {
+            const heart = document.createElement("span");
+
+            heart.className = "floating-heart";
+
+            const heartTypes = ["❤️", "💕", "💗", "💖", "💘"];
+
+            heart.textContent =
+                heartTypes[Math.floor(Math.random() * heartTypes.length)];
+
+            heart.style.left = (5 + Math.random() * 90) + "vw";
+            heart.style.top = (45 + Math.random() * 40) + "vh";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                heart.remove();
+            }, 1900);
+
+        }, i * 90);
+    }
+
+    message.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+
+/* 6. KELopak BUNGA JATUH */
+function createPetal() {
+    const petal = document.createElement("span");
+
+    petal.className = "petal";
+    petal.textContent = ["🌸", "💗", "🌷"][
+        Math.floor(Math.random() * 3)
+    ];
+
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (12 + Math.random() * 12) + "px";
+    petal.style.animationDuration = (7 + Math.random() * 6) + "s";
+
+    document.body.appendChild(petal);
+
+    setTimeout(function() {
+        petal.remove();
+    }, 14000);
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    setInterval(createPetal, 850);
+}
+</script>
+
+</body>
+</html>
